@@ -17,4 +17,16 @@ export class ApiService {
   getUserById(userId: string): Observable<any> {
     return this.http.get(`${this.baseUrl}/users/${userId}`);
   }
+
+  getUserCourses(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/courses/user`);
+  }
+
+  getTeacherStudents(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/teachers/students`);
+  }
+
+  getPrograms(): Observable<any> {
+    return this.http.get(`${this.baseUrl}/programs`);
+  }
 }

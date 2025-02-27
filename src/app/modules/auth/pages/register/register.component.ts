@@ -30,8 +30,9 @@ export class RegisterComponent implements OnInit {
   onSubmit() {
     if (this.registerForm.valid) {
       const userData = { ...this.registerForm.value, role: this.role };
-      console.log(userData);
-      this.apiService.registerUser(userData).subscribe(() => {
+      this.apiService.registerUser(userData).subscribe((response) => {
+        localStorage.setItem('userId', response.id);
+        localStorage.setItem('userRole', response.role); // Guardamos el rol
         alert('Registro exitoso');
         this.router.navigate(['/dashboard']);
       }, () => {
@@ -39,6 +40,7 @@ export class RegisterComponent implements OnInit {
       });
     }
   }
+  
 
   goBack() {
     this.router.navigate(['/']);

@@ -1,1 +1,64 @@
-<p>main-dashboard works!</p>
+<div class="dashboard">
+    <app-navbar></app-navbar>
+    <div class="container-fluid">
+      <div class="row">
+        <!-- Sidebar -->
+        <div class="col-md-3 sidebar-container">
+          <app-sidebar [userRole]="userRole"></app-sidebar>
+        </div>
+  
+        <!-- Contenido Principal -->
+        <div class="col-md-9 main-content">
+          <h2>Bienvenido, {{ userName }}</h2>
+  
+          <div class="row mt-4">
+            <!-- Tarjeta de Información General -->
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">Información General</h5>
+                  <p class="card-text">
+                    {{ userRole === 'Student' ? 'Eres un estudiante inscrito en el programa.' : 'Eres un profesor en la academia.' }}
+                  </p>
+                  <p><strong>Email:</strong> {{ userEmail }}</p>
+                  <p><strong>Rol:</strong> {{ userRole }}</p>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Tarjeta de Materias o Estudiantes -->
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">
+                    {{ userRole === 'Student' ? 'Materias Inscritas' : 'Estudiantes Asignados' }}
+                  </h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let item of dataList">
+                      {{ item.name }}
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+            <!-- Tarjeta de Programas para Estudiantes -->
+            <div class="col-md-12" *ngIf="userRole === 'Student'">
+              <div class="card mt-3">
+                <div class="card-body">
+                  <h5 class="card-title">Programas Disponibles</h5>
+                  <ul class="list-group list-group-flush">
+                    <li class="list-group-item" *ngFor="let program of programs">
+                      {{ program.name }} - {{ program.totalCredits }} créditos
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+  
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

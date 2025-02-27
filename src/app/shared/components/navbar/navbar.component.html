@@ -1,1 +1,14 @@
-<p>navbar works!</p>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">AcademiaPortal</a>
+    <div class="d-flex align-items-center">
+      <span class="me-2">{{ userName }}</span>
+      <i class="fa fa-user-circle fa-lg" (click)="logout()"></i>
+      <ul class="dropdown-menu" *ngIf="showDropdown">
+        <li><a class="dropdown-item" (click)="goToProfile()">Mi Perfil</a></li>
+        <li><a class="dropdown-item" (click)="goToEditProfile()">Editar Perfil</a></li>
+        <li><a class="dropdown-item text-danger" (click)="logout()">Salir</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
