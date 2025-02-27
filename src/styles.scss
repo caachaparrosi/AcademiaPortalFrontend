@@ -1,1 +1,46 @@
-/* You can add global styles to this file, and also import other style files */
+// Variables globales
+$primary-purple: #6b46c1;
+$primary-purple-dark: #553c9a;
+$primary-purple-light: #9f7aea;
+$bg-soft: #f0f0f7;
+$text-dark: #2d3748;
+$text-light: #ffffff;
+$danger: #e53e3e;
+$danger-dark: #c53030;
+
+// Mixins
+@mixin neumorph-shadow($color, $intensity: 1) {
+  box-shadow: 
+    #{6 * $intensity}px #{6 * $intensity}px #{12 * $intensity}px rgba($color, 0.2),
+    #{-6 * $intensity}px #{-6 * $intensity}px #{12 * $intensity}px rgba(255, 255, 255, 0.8);
+}
+
+@mixin glass-effect {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+@mixin button-base {
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  
+  &:hover {
+    transform: translateY(-2px);
+  }
+  
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Estilos globales
+body {
+  background: $bg-soft;
+  background-image: 
+    radial-gradient(at 20% 20%, rgba($primary-purple-light, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 80%, rgba($primary-purple, 0.15) 0px, transparent 50%);
+  min-height: 100vh;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
